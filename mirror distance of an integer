@@ -1,0 +1,11 @@
+class Solution:
+    def mirrorDistance(self, n: int) -> int:
+        reversenums=int(str(n)[::-1])
+        return abs(n-reversenums)
+
+
+
+
+        
+        
+        
