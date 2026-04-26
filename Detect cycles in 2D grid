@@ -1,0 +1,43 @@
+from typing import List
+
+class Solution:
+    def containsCycle(self, grid: List[List[str]]) -> bool:
+        rows, cols = len(grid), len(grid[0])
+        visited = [[False] * cols for _ in range(rows)]
+
+        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+
+        def dfs(r, c, pr, pc, ch):
+            visited[r][c] = True
+
+            for dr, dc in directions:
+                nr = r + dr
+                nc = c + dc
+
+                
+                if 0 <= nr < rows and 0 <= nc < cols:
+
+                    
+                    if grid[nr][nc] != ch:
+                        continue
+
+                   
+                    if nr == pr and nc == pc:
+                        continue
+
+                    
+                    if visited[nr][nc]:
+                        return True
+
+                    if dfs(nr, nc, r, c, ch):
+                        return True
+
+            return False
+
+        for i in range(rows):
+            for j in range(cols):
+                if not visited[i][j]:
+                    if dfs(i, j, -1, -1, grid[i][j]):
+                        return True
+
+        return False
