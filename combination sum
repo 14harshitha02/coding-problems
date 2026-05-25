@@ -1,0 +1,15 @@
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        result=[]
+        def cand(start,path,total):
+            if(total==target):
+                result.append(path[:])
+                return
+            if(total>target):
+                return
+            for i in range(start,len(candidates)):
+                path.append(candidates[i])
+                cand(i,path,total+candidates[i])
+                path.pop()
+        cand(0,[],0)
+        return result                
