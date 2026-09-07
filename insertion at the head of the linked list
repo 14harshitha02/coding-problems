@@ -1,0 +1,15 @@
+"""
+class Node:
+
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+"""
+
+class Solution:
+    def insertAtFront(self, head, x):
+        new_Node=Node(x)
+        new_Node.next=head
+        head=new_Node
+        return head
+        
